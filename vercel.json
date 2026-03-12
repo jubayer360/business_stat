@@ -1,5 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/", "destination": "/statistics_roadmap_v2.html" }
-  ]
-}
