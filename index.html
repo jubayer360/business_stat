@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Business Statistics – Complete Learning Roadmap</title>
+<style>
+  :root {
+    --bg: #0a0a14;
+    --bg2: #0d0d1e;
+    --bg3: #0e0e20;
+    --bg4: #12122a;
+    --bg5: #14142a;
+    --border: #1e1e3a;
+    --border2: #2a2a4a;
+    --text: #e8e8e8;
+    --muted: #888;
+    --dim: #555;
+    --teal: #4ECDC4;
+    --purple: #A78BFA;
+    --red: #FF6B6B;
+    --orange: #F97316;
+    --green: #34D399;
+    --yellow: #E8C547;
+    --coursera: #0056D2;
+    --youtube: #FF0000;
+    --khan: #14BF96;
+    --nptel: #FF6B00;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, 'Times New Roman', serif;
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+  a { text-decoration: none; }
+  a:hover { opacity: 0.8; }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0a0a14 0%, #12122a 50%, #0a0a14 100%);
+    border-bottom: 1px solid #2a2a4a;
+    padding: 44px 24px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(78,205,196,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(168,139,250,0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .header-eyebrow {
+    font-size: 11px; letter-spacing: 6px; color: var(--teal);
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: normal; letter-spacing: 1px; color: #fff;
+    margin-bottom: 8px;
+  }
+  .header-sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+  .progress-wrap { max-width: 480px; margin: 0 auto; }
+  .progress-labels {
+    display: flex; justify-content: space-between;
+    margin-bottom: 8px; font-size: 12px; color: var(--muted);
+  }
+  .progress-labels span:last-child { color: var(--teal); font-weight: bold; }
+  .progress-bar-bg {
+    height: 6px; background: #1e1e3a; border-radius: 3px; overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--teal), var(--purple));
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+
+  /* PHASE NAV */
+  .phase-nav {
+    display: flex; gap: 8px; padding: 14px 20px;
+    overflow-x: auto; border-bottom: 1px solid var(--border);
+    background: var(--bg2); scrollbar-width: none;
+  }
+  .phase-nav::-webkit-scrollbar { display: none; }
+  .phase-btn {
+    padding: 6px 14px; border-radius: 20px; cursor: pointer;
+    font-size: 12px; letter-spacing: 1px; white-space: nowrap;
+    font-family: Georgia, serif; background: transparent;
+    transition: background 0.2s;
+  }
+  .phase-btn:hover { opacity: 0.85; }
+
+  /* MAIN */
+  .main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+
+  /* PHASE BLOCK */
+  .phase-block { margin-bottom: 48px; }
+  .phase-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 22px; padding-bottom: 12px;
+  }
+  .phase-circle {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: bold; flex-shrink: 0;
+  }
+  .phase-title-wrap .phase-label {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  }
+  .phase-title-wrap .phase-name { font-size: 20px; color: #fff; letter-spacing: 0.5px; }
+  .phase-count { margin-left: auto; font-size: 12px; color: #666; }
+
+  /* LECTURE CARD */
+  .lecture-list { display: flex; flex-direction: column; gap: 10px; }
+  .lecture-card {
+    border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden;
+    background: var(--bg3);
+    transition: border-color 0.3s;
+  }
+  .lecture-card.done { background: rgba(78,205,196,0.03); }
+  .lecture-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; cursor: pointer; user-select: none;
+  }
+  .lecture-header:hover { background: rgba(255,255,255,0.02); }
+  .check-circle {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 2px solid #444;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; cursor: pointer;
+    transition: all 0.2s; font-size: 11px; font-weight: bold; color: #000;
+  }
+  .check-circle.checked { background: var(--teal); border-color: var(--teal); }
+  .lec-num {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: bold; flex-shrink: 0;
+  }
+  .lec-title { font-size: 15px; letter-spacing: 0.3px; color: var(--text); }
+  .lec-title.done { text-decoration: line-through; color: #666; }
+  .lec-meta { font-size: 11px; color: #555; margin-top: 2px; }
+  .lec-arrow {
+    margin-left: auto; font-size: 16px; color: #444;
+    transition: transform 0.3s; display: inline-block;
+  }
+  .lec-arrow.open { transform: rotate(180deg); }
+
+  /* EXPANDED */
+  .lecture-body { padding: 0 18px 18px; border-top: 1px solid var(--border); }
+  .section-label {
+    font-size: 10px; letter-spacing: 3px; color: var(--dim);
+    text-transform: uppercase; margin: 16px 0 10px;
+  }
+  .topics-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
+  .topic-pill {
+    padding: 4px 10px; background: var(--bg5);
+    border: 1px solid var(--border2); border-radius: 4px;
+    font-size: 12px; color: #bbb;
+  }
+  .resources-list { display: flex; flex-direction: column; gap: 8px; }
+  .resource-row {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 14px; background: var(--bg4);
+    border-radius: 8px; border: 1px solid var(--border);
+  }
+  .resource-row.primary-res { border-color: #2a2a5a; }
+  .platform-icon {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0; margin-top: 1px;
+  }
+  .resource-info { flex: 1; }
+  .resource-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .resource-link { font-size: 13px; padding-bottom: 1px; }
+  .tag-pill {
+    font-size: 9px; padding: 2px 7px; border-radius: 10px;
+    letter-spacing: 1px; text-transform: uppercase; border: 1px solid;
+  }
+  .tag-primary { border-color: var(--teal); color: var(--teal); }
+  .tag-supplement { border-color: #555; color: #666; }
+  .resource-note { font-size: 11px; color: #666; margin-top: 3px; }
+
+  /* LEGEND */
+  .legend {
+    padding: 20px 24px; border: 1px solid var(--border);
+    border-radius: 10px; background: var(--bg3); margin-top: 8px;
+  }
+  .legend-items { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* PRINT */
+  @media print {
+    .phase-nav, .check-circle { display: none; }
+    .lecture-body { display: block !important; }
+    body { background: white; color: black; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 500px) {
+    .lecture-header { padding: 12px 12px; gap: 9px; }
+    .lecture-body { padding: 0 12px 14px; }
+    .resource-row { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Business Statistics</div>
+  <h1>Complete Learning Roadmap</h1>
+  <p class="header-sub">18 Lectures · 6 Phases · Sequential &amp; Comprehensive</p>
+  <div class="progress-wrap">
+    <div class="progress-labels">
+      <span id="prog-text">0 of 18 lectures completed</span>
+      <span id="prog-pct">0%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="prog-fill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE NAV -->
+<div class="phase-nav" id="phase-nav"></div>
+
+<!-- MAIN -->
+<div class="main" id="main-content"></div>
+
+<script>
+const PHASES = [
+  {
+    id:"p1", phase:"PHASE 1", title:"Foundations", color:"#E8C547",
+    lectures:[
+      {
+        id:1, title:"Introduction to Statistics",
+        topics:["Definition & History of Statistics","Characteristics of Statistics (6 points)","Limitations of Statistics","Uses & Importance (Agriculture, Business, Medicine etc.)","Types of Statistics – Descriptive vs Inferential","Statistical Methods – 5 stages (Collection → Interpretation)"],
+        resources:[
+          {type:"Coursera",label:"Basic Statistics – University of Amsterdam",note:"Week 1 — Start here for conceptual foundation",url:"https://www.coursera.org/learn/basic-statistics",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Introduction to Statistics",note:"First 3 videos in his statistics series",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"Khan Academy",label:"Statistical Studies Introduction",note:"Context and overview before diving into formulas",url:"https://www.khanacademy.org/math/statistics-probability",tag:"Supplement"},
+        ]
+      },
+      {
+        id:2, title:"Data Array & Frequency Distribution",
+        topics:["Raw Data, Data Array (ascending/descending)","Population (finite & infinite) vs Sample","Variable – Qualitative & Quantitative","Primary Data (5 collection methods) vs Secondary Data","Published & Unpublished sources","Classification – Geographical, Chronological, Qualitative, Quantitative","Exclusive vs Inclusive method of classification","Tabulation – Parts and Types of tables"],
+        resources:[
+          {type:"Coursera",label:"Basic Statistics – UvA",note:"Week 2 — Data types and organization",url:"https://www.coursera.org/learn/basic-statistics",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Frequency Distributions",note:"Discrete & continuous FD, class intervals, tally marks",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"Math and Science (Jason Gibson) – Histograms",note:"Very clear class boundary explanation",url:"https://www.youtube.com/@MathAndScience",tag:"Supplement"},
+        ]
+      },
+      {
+        id:3, title:"Graphical Presentation",
+        topics:["Histogram – equal class intervals","Histogram – unequal class intervals (frequency density adjustment)","Frequency Polygon (mid-values joined by straight lines)","Frequency Curve (mid-values joined by freehand)","Ogive – Less than (upper limit vs cum. freq.)","Ogive – More than (lower limit vs cum. freq.)","Reading median from ogive intersection"],
+        resources:[
+          {type:"Coursera",label:"Basic Statistics – UvA",note:"Week 2 continued — graphical methods",url:"https://www.coursera.org/learn/basic-statistics",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Histograms & Frequency Graphs",note:"All four graph types covered in sequence",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"Khan Academy",label:"Displaying Quantitative Data",note:"Histograms and cumulative frequency",url:"https://www.khanacademy.org/math/statistics-probability/displaying-describing-data",tag:"Supplement"},
+          {type:"YouTube",label:"Math and Science – Ogive (Cumulative Freq. Curve)",note:"Search: 'ogive cumulative frequency curve' on his channel",url:"https://www.youtube.com/@MathAndScience",tag:"Supplement"},
+        ]
+      },
+    ]
+  },
+  {
+    id:"p2", phase:"PHASE 2", title:"Descriptive Statistics", color:"#4ECDC4",
+    lectures:[
+      {
+        id:4, title:"Measures of Central Tendency – AM",
+        topics:["Arithmetic Mean – Direct Method (ungrouped)","Arithmetic Mean – Shortcut Method (ungrouped) using d = X – A","Arithmetic Mean – Direct Method (grouped/frequency distribution)","Arithmetic Mean – Shortcut Method (grouped) using d = (X–A)/i","Finding missing frequency when mean is known","Weighted arithmetic mean concept"],
+        resources:[
+          {type:"Coursera",label:"Rice University – Business Statistics & Analysis",note:"Module 2 — Descriptive statistics, AM methods",url:"https://www.coursera.org/specializations/business-statistics-analysis",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Arithmetic Mean (all methods)",note:"Covers direct, shortcut, grouped and ungrouped",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"Khan Academy",label:"Summarizing Quantitative Data",note:"Strong intuition building for mean",url:"https://www.khanacademy.org/math/statistics-probability/summarizing-quantitative-data",tag:"Supplement"},
+        ]
+      },
+      {
+        id:5, title:"Measures of Central Tendency – GM, HM, Median, Mode",
+        topics:["Geometric Mean – ungrouped (nth root / log method)","Geometric Mean – grouped (log method)","Harmonic Mean – ungrouped (reciprocal of AM of reciprocals)","Harmonic Mean – grouped","Median – ungrouped (n odd & n even)","Median – discrete frequency distribution (cum. freq. method)","Median – continuous FD (interpolation formula with Lm, fm, fm-1, h)","Mode – ungrouped (most frequent value)","Mode – grouped (modal class formula with f0, f-1, f+1, h)"],
+        resources:[
+          {type:"Coursera",label:"Rice University – Business Statistics & Analysis",note:"Module 2 — All measures of central tendency",url:"https://www.coursera.org/specializations/business-statistics-analysis",tag:"Primary"},
+          {type:"YouTube",label:"The Organic Chemistry Tutor – GM & HM",note:"Search: 'Geometric Mean and Harmonic Mean Statistics'",url:"https://www.youtube.com/@TheOrganicChemistryTutor",tag:"Primary"},
+          {type:"YouTube",label:"Math and Science – Median from Frequency Distribution",note:"Covers the interpolation formula exactly as in your notes",url:"https://www.youtube.com/@MathAndScience",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Mode (grouped data)",note:"Modal class formula and interpretation",url:"https://www.youtube.com/@BrandonFoltz",tag:"Supplement"},
+        ]
+      },
+      {
+        id:6, title:"Measures of Dispersion",
+        topics:["Range and Coefficient of Range","Quartile Deviation (semi-interquartile range) & Coefficient","Mean Deviation from Mean, Median, Mode – ungrouped","Mean Deviation – grouped (frequency distribution)","Standard Deviation – deviation from actual mean (ungrouped)","Standard Deviation – shortcut using assumed mean d=(X–A)","Standard Deviation – grouped, actual mean method","Standard Deviation – grouped, assumed mean shortcut","Variance (square of SD)","Coefficient of Variation (CV = σ/X̄ × 100)","Comparing distributions using CV"],
+        resources:[
+          {type:"Coursera",label:"Rice University – Business Statistics & Analysis",note:"Modules 2–3 — Variability and dispersion",url:"https://www.coursera.org/specializations/business-statistics-analysis",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Measures of Variability",note:"Range through SD, all shortcut methods with examples",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"StatQuest – Standard Deviation Clearly Explained",note:"Build conceptual clarity before formula practice",url:"https://www.youtube.com/@statquest",tag:"Supplement"},
+          {type:"YouTube",label:"365 Data Science – Coefficient of Variation",note:"Search: 'Coefficient of Variation 365 Data Science'",url:"https://www.youtube.com/@365DataScience",tag:"Supplement"},
+        ]
+      },
+      {
+        id:7, title:"Moments, Skewness & Kurtosis",
+        topics:["Raw Moments (μ'r) about arbitrary value 'a'","Central Moments (μr) about mean","Relation between Raw & Central Moments (μ1, μ2, μ3, μ4 formulas)","Skewness – definition and types","β₁ measure of skewness (μ₃²/μ₂³)","Positively skewed: Mean > Median > Mode","Negatively skewed: Mode > Median > Mean","Kurtosis – Leptokurtic, Platykurtic, Mesokurtic","β₂ measure of kurtosis (μ₄/μ₂²): <3, =3, >3","Complete numerical example – all four moments + β₁, β₂"],
+        resources:[
+          {type:"YouTube",label:"NPTEL – Moments, Skewness & Kurtosis",note:"IIT lectures — exact β₁β₂ formula derivation, matches your notes",url:"https://www.youtube.com/@nptel",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Skewness & Kurtosis",note:"Good conceptual walkthrough with visual examples",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"NPTEL – Raw & Central Moments Relation",note:"Search: 'raw central moments NPTEL statistics'",url:"https://www.youtube.com/@nptel",tag:"Supplement"},
+          {type:"Coursera",label:"Basic Statistics – UvA",note:"Week 3 — distribution shape (skewness & kurtosis)",url:"https://www.coursera.org/learn/basic-statistics",tag:"Supplement"},
+        ]
+      },
+    ]
+  },
+  {
+    id:"p3", phase:"PHASE 3", title:"Relationships Between Variables", color:"#FF6B6B",
+    lectures:[
+      {
+        id:8, title:"Regression Analysis",
+        topics:["Definition & purpose of regression","Simple vs Multiple Linear Regression","Regression equation of Y on X: Y = a + bX","Normal equations for Y on X","Regression equation of X on Y: X = a + bY","Normal equations for X on Y","Deviation from actual mean method (byx = Σxy/Σx²)","Deviation from assumed mean method (dx, dy shortcut)","Relationship: r = √(byx × bxy)","Prediction / estimation using regression equations"],
+        resources:[
+          {type:"Coursera",label:"Rice University – Business Statistics & Analysis",note:"Module 4 — Regression analysis, both lines",url:"https://www.coursera.org/specializations/business-statistics-analysis",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Linear Regression Series",note:"Both regression lines, normal equations, deviation methods",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"StatQuest – Linear Regression Clearly Explained",note:"Build intuition before jumping to formulas",url:"https://www.youtube.com/@statquest",tag:"Supplement"},
+          {type:"Khan Academy",label:"Describing Relationships – Regression",note:"AP Statistics regression section",url:"https://www.khanacademy.org/math/statistics-probability/describing-relationships-in-quantitative-data",tag:"Supplement"},
+        ]
+      },
+      {
+        id:9, title:"Correlation Analysis",
+        topics:["Definition of correlation","Positive & Negative correlation","Simple, Partial & Multiple correlation","Linear vs Non-linear (curvilinear) correlation","Scatter Diagram method","Karl Pearson's coefficient r – formula","Direct method (from raw X and Y values)","Deviation from actual mean: r = Σxy / √(Σx²·Σy²)","Deviation from assumed mean (dx, dy method)","Interpretation: r = +1, –1, 0, and intermediate values"],
+        resources:[
+          {type:"Coursera",label:"Rice University – Business Statistics & Analysis",note:"Module 4 — Correlation coefficient, all methods",url:"https://www.coursera.org/specializations/business-statistics-analysis",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Pearson Correlation",note:"All three computational approaches covered",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"StatQuest – Pearson Correlation Clearly Explained",note:"Focus on interpretation of r values",url:"https://www.youtube.com/@statquest",tag:"Supplement"},
+          {type:"Khan Academy",label:"Correlation Coefficients",note:"Understanding the ±1 range and meaning",url:"https://www.khanacademy.org/math/statistics-probability/describing-relationships-in-quantitative-data",tag:"Supplement"},
+        ]
+      },
+    ]
+  },
+  {
+    id:"p4", phase:"PHASE 4", title:"Probability & Distributions", color:"#A78BFA",
+    lectures:[
+      {
+        id:10, title:"Probability",
+        topics:["Classical definition of Probability P(A) = a/n","Equally likely events","Mutually exclusive events","Addition Theorem – mutually exclusive: P(A or B) = P(A) + P(B)","Addition Theorem – not mutually exclusive: P(A or B) = P(A) + P(B) – P(AB)","Venn diagram approach","Multiplication Theorem – independent events: P(AB) = P(A)·P(B)","Independent vs Dependent events","Conditional Probability: P(B/A) = P(AB)/P(A)","Without replacement problems"],
+        resources:[
+          {type:"Coursera",label:"Basic Statistics – UvA",note:"Week 4 — Probability theorems sequentially",url:"https://www.coursera.org/learn/basic-statistics",tag:"Primary"},
+          {type:"Khan Academy",label:"Probability – Full Section",note:"Best Khan Academy topic — follow it in exact sequence",url:"https://www.khanacademy.org/math/statistics-probability/probability-library",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Probability Series",note:"All theorems with Venn diagrams and worked examples",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"StatQuest – Probability is not Likelihood",note:"Supplementary conceptual clarity video",url:"https://www.youtube.com/@statquest",tag:"Supplement"},
+        ]
+      },
+      {
+        id:11, title:"Probability Distributions",
+        topics:["Binomial Distribution – conditions (Bernoulli trial, n, p, q)","Binomial formula: P(X=x) = nCx · p^x · q^(n-x)","Binomial: at least / at most problems","Poisson Distribution – conditions (n→∞, p→0, λ = np finite)","Poisson formula: P(X=x) = e^(-λ)·λ^x / x!","Poisson: real-world application cases (12 examples)","Normal Distribution – definition, parameters μ and σ²","7 key properties of normal distribution","Symmetry, mean=median=mode, total area = 1"],
+        resources:[
+          {type:"Coursera",label:"Basic Statistics – UvA",note:"Weeks 4–5 — All three distributions",url:"https://www.coursera.org/learn/basic-statistics",tag:"Primary"},
+          {type:"Coursera",label:"Rice University – Business Statistics & Analysis",note:"Module 3 — Binomial, Poisson, Normal",url:"https://www.coursera.org/specializations/business-statistics-analysis",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Binomial, Poisson & Normal",note:"Separate dedicated playlists for each distribution",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"StatQuest – Binomial & Normal Distributions",note:"Intuition before computation — watch first",url:"https://www.youtube.com/@statquest",tag:"Supplement"},
+          {type:"Khan Academy",label:"Random Variables → Binomial → Poisson",note:"Follow this exact sequence in their library",url:"https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library",tag:"Supplement"},
+        ]
+      },
+    ]
+  },
+  {
+    id:"p5", phase:"PHASE 5", title:"Inference & Testing", color:"#F97316",
+    lectures:[
+      {
+        id:12, title:"Sampling",
+        topics:["Census vs Sample survey","Definition of Sampling","Advantages of sampling (6 points)","Simple Random Sampling – Lottery method","SRS – Random Number Table method (Tippett, Fisher-Yates, Kendal-Smith, Rand)","Stratified Sampling – proportional allocation","Systematic Sampling – every kth item, sampling interval k = N/n","Multi-stage Sampling (illustrated example)","Judgment Sampling – uses and limitations","Quota Sampling","Convenience Sampling (Chunk)","Sample size determination principles"],
+        resources:[
+          {type:"YouTube",label:"Brandon Foltz – Sampling Methods",note:"Random vs non-random, all types covered",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"Khan Academy",label:"Study Design – Sampling Methods",note:"SRS, stratified, systematic clearly explained",url:"https://www.khanacademy.org/math/statistics-probability/designing-studies",tag:"Primary"},
+          {type:"YouTube",label:"NPTEL – Sampling Theory & Methods",note:"Search: 'multistage sampling NPTEL' for complete coverage",url:"https://www.youtube.com/@nptel",tag:"Supplement"},
+        ]
+      },
+      {
+        id:13, title:"Test of Hypothesis – Large Sample (Z-test)",
+        topics:["Hypothesis definition","Null Hypothesis (H₀) vs Alternative Hypothesis (H₁)","Type I Error (reject true H₀) and Type II Error (accept false H₀)","Level of significance (α = 0.01, 0.05, 0.10)","Degrees of freedom","Critical region vs Acceptance region","One-tailed test (right & left) vs Two-tailed test","Z critical values table (α = 0.10, 0.05, 0.01)","Single mean Z-test: Z = (X̄ – μ)/(σ/√n)","Double mean Z-test – equal variance","Double mean Z-test – unequal variance","Decision rule: calculated vs tabulated value"],
+        resources:[
+          {type:"Coursera",label:"Rice University – Business Statistics & Analysis",note:"Module 5 — Hypothesis testing framework",url:"https://www.coursera.org/specializations/business-statistics-analysis",tag:"Primary"},
+          {type:"Coursera",label:"Inferential Statistics – Duke University",note:"Covers Z-test step by step with decision rules",url:"https://www.coursera.org/learn/inferential-statistics-intro",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Hypothesis Testing Series",note:"Best on YouTube for your exact notation and level",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"Khan Academy",label:"Significance Tests (Hypothesis Testing)",note:"Thorough step-by-step from basics",url:"https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample",tag:"Supplement"},
+          {type:"YouTube",label:"StatQuest – p-values & Hypothesis Testing",note:"Excellent conceptual foundation video",url:"https://www.youtube.com/@statquest",tag:"Supplement"},
+        ]
+      },
+      {
+        id:14, title:"Test of Hypothesis – Small Sample (t-test)",
+        topics:["Student's t-distribution – W.S. Gosset (1908)","When to use t-test vs Z-test (n ≤ 30, σ unknown)","t-statistic: t = (X̄ – μ)/(S/√n)","Sample SD formula: S = √[Σ(X–X̄)²/(n–1)]","Single sample t-test – significance of population mean","Two independent samples t-test","Pooled standard deviation S = √[(Σx₁² + Σx₂²)/(n₁+n₂–2)]","Two-sample t-statistic with combined S","Degrees of freedom: ν = n₁ + n₂ – 2","Reading t-table and decision making"],
+        resources:[
+          {type:"Coursera",label:"Rice University – Business Statistics & Analysis",note:"Module 5 continued — t-test theory and applications",url:"https://www.coursera.org/specializations/business-statistics-analysis",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – t-test Series",note:"Single sample and two-sample, pooled SD formula",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"StatQuest – t-tests Clearly Explained",note:"When to use t vs Z — very clear distinction",url:"https://www.youtube.com/@statquest",tag:"Supplement"},
+          {type:"Khan Academy",label:"t-tests Section (AP Statistics)",note:"Step-by-step small sample testing",url:"https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample",tag:"Supplement"},
+        ]
+      },
+      {
+        id:15, title:"Chi-Square Test & F-test",
+        topics:["Chi-square (χ²) – definition, Karl Pearson (1890)","Expected frequency: E = (Row Total × Column Total) / N","χ² = Σ[(O–E)²/E]","Contingency table construction","Degrees of freedom: (r–1)(c–1)","Decision: calculated χ² vs table χ²","F-distribution – R.A. Fisher","F = S₁²/S₂² (larger variance always in numerator)","Degrees of freedom ν₁ = n₁–1, ν₂ = n₂–1","Two-sample variance equality test","Uses of Chi-square test (5 applications)"],
+        resources:[
+          {type:"Coursera",label:"Inferential Statistics – Duke University",note:"Chi-square and F-test with examples",url:"https://www.coursera.org/learn/inferential-statistics-intro",tag:"Primary"},
+          {type:"YouTube",label:"Brandon Foltz – Chi-Square & F-test",note:"Dedicated playlists for each, contingency table approach",url:"https://www.youtube.com/@BrandonFoltz",tag:"Primary"},
+          {type:"YouTube",label:"StatQuest – Chi-Square Clearly Explained",note:"Contingency table and expected frequencies",url:"https://www.youtube.com/@statquest",tag:"Primary"},
+          {type:"YouTube",label:"zedstatistics – F-test of Equality of Variances",note:"Exact two-sample variance comparison you need",url:"https://www.youtube.com/@zedstatistics",tag:"Supplement"},
+          {type:"Khan Academy",label:"Chi-Square Tests Section",note:"AP Statistics — well-structured practice",url:"https://www.khanacademy.org/math/statistics-probability/inference-categorical-data-chi-square-tests",tag:"Supplement"},
+        ]
+      },
+    ]
+  },
+  {
+    id:"p6", phase:"PHASE 6", title:"Applied Business Topics", color:"#34D399",
+    lectures:[
+      {
+        id:16, title:"Time Series – Concepts & Components",
+        topics:["Definition and role of Time Series","Why time analysis matters (forecasting, planning, comparison)","Secular Trend – linear and non-linear types","Seasonal Variations – climate-driven (umbrellas, wool) and custom-driven (Eid, Christmas)","Cyclical Variations – business cycles (boom, recession, depression, recovery)","Irregular Variations – earthquakes, wars, floods","4 methods of measuring trend overview (freehand, semi-average, moving average, least squares)","Why Least Squares is preferred"],
+        resources:[
+          {type:"YouTube",label:"NPTEL – Time Series Analysis",note:"Search: 'Time Series Analysis NPTEL' — exact component coverage matching your notes",url:"https://www.youtube.com/@nptel",tag:"Primary"},
+          {type:"YouTube",label:"Commerce Academy – Time Series Components",note:"South Asian B.Com curriculum, matches your lecture format exactly",url:"https://www.youtube.com/results?search_query=commerce+academy+time+series+analysis+statistics",tag:"Primary"},
+          {type:"Coursera",label:"Practical Time Series – SUNY (early weeks only)",note:"Audit free — use only Weeks 1–2 for trends and components",url:"https://www.coursera.org/learn/practical-time-series-analysis",tag:"Supplement"},
+        ]
+      },
+      {
+        id:17, title:"Time Series – Least Squares & Forecasting",
+        topics:["Straight-line trend equation: Yc = a + bX","Normal equations: ΣY = Na + bΣX and ΣXY = aΣX + bΣX²","Simplified form when ΣX = 0: a = ΣY/N and b = ΣXY/ΣX²","Setting up the deviation table (X deviations from mid-year)","Computing trend values Yc for each year","Forecasting: assign correct X value to future year","Monthly increment = annual b ÷ 12","Full numerical examples (production, sugar, tourism data)"],
+        resources:[
+          {type:"YouTube",label:"NPTEL – Least Squares Trend Fitting",note:"Exact tabular method with X deviation from mid-point as in your notes",url:"https://www.youtube.com/@nptel",tag:"Primary"},
+          {type:"YouTube",label:"Mahesh Tutorials – Time Series Least Squares",note:"Search: 'Method of Least Squares Time Series Mahesh Tutorials'",url:"https://www.youtube.com/results?search_query=mahesh+tutorials+time+series+least+squares+statistics",tag:"Primary"},
+          {type:"YouTube",label:"Mathur Sir Classes – Trend Analysis",note:"X deviation table method matches your lecture exactly",url:"https://www.youtube.com/results?search_query=mathur+sir+classes+time+series+trend+statistics",tag:"Supplement"},
+        ]
+      },
+      {
+        id:18, title:"Index Numbers",
+        topics:["Definition and purpose of Index Numbers","Problems of construction (6 aspects)","Classification: Price, Quantity, Value, Special Purpose","Simple Aggregative Method: P₀₁ = (Σp₁/Σp₀) × 100","Simple Average of Relatives (AM method)","Simple Average of Relatives (GM method)","Weighted Aggregative – Laspeyre's Method (base year weights q₀)","Weighted Aggregative – Paasche's Method (current year weights q₁)","Dorbish & Bowley's Method (AM of Laspeyre's & Paasche's)","Fisher's Ideal Method (GM of L & P) – why it is 'Ideal' (4 reasons)","Marshall-Edgeworth Method","Kelly's Method","Uses of Index Numbers (framing policy, trends, deflating)"],
+        resources:[
+          {type:"YouTube",label:"Commerce Academy – Index Numbers (All Methods)",note:"All 6 methods with solved examples in your exact tabular format",url:"https://www.youtube.com/results?search_query=commerce+academy+index+numbers+all+methods+statistics",tag:"Primary"},
+          {type:"YouTube",label:"Mathur Sir Classes – Index Numbers",note:"Laspeyre, Paasche, Fisher's Ideal sequentially with full p₀q₀ tables",url:"https://www.youtube.com/results?search_query=mathur+sir+index+numbers+fisher+ideal",tag:"Primary"},
+          {type:"YouTube",label:"NPTEL – Index Numbers (Economics)",note:"Search: 'Index Numbers NPTEL' — formal theoretical treatment",url:"https://www.youtube.com/@nptel",tag:"Supplement"},
+          {type:"YouTube",label:"B.Com / CA Foundation – Fisher Ideal Index",note:"Search: 'Fisher Ideal Index Number B.Com statistics' — best South Asian coverage",url:"https://www.youtube.com/results?search_query=fisher+ideal+index+number+bcom+statistics+solved+example",tag:"Supplement"},
+        ]
+      },
+    ]
+  },
+];
+
+const PLATFORM_COLORS = {
+  "Coursera":"#0056D2","YouTube":"#FF0000","Khan Academy":"#14BF96","NPTEL":"#FF6B00"
+};
+const PLATFORM_ICONS = {
+  "Coursera":"🎓","YouTube":"▶","Khan Academy":"📐","NPTEL":"🏛"
+};
+
+let completedSet = new Set(JSON.parse(localStorage.getItem('bs_completed') || '[]'));
+let expandedSet = new Set([1]);
+
+function saveCompleted() {
+  localStorage.setItem('bs_completed', JSON.stringify([...completedSet]));
+}
+
+function updateProgress() {
+  const total = PHASES.reduce((a,p) => a + p.lectures.length, 0);
+  const done = completedSet.size;
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('prog-text').textContent = `${done} of ${total} lectures completed`;
+  document.getElementById('prog-pct').textContent = `${pct}%`;
+  document.getElementById('prog-fill').style.width = pct + '%';
+}
+
+function toggleComplete(e, id) {
+  e.stopPropagation();
+  if (completedSet.has(id)) completedSet.delete(id);
+  else completedSet.add(id);
+  saveCompleted();
+  renderAll();
+}
+
+function toggleExpand(id) {
+  if (expandedSet.has(id)) expandedSet.delete(id);
+  else expandedSet.add(id);
+  renderAll();
+}
+
+function renderAll() {
+  renderPhaseNav();
+  renderMain();
+  updateProgress();
+}
+
+function renderPhaseNav() {
+  const nav = document.getElementById('phase-nav');
+  nav.innerHTML = PHASES.map(p => `
+    <button class="phase-btn" onclick="document.getElementById('${p.id}').scrollIntoView({behavior:'smooth',block:'start'})"
+      style="border:1px solid ${p.color}44; color:${p.color};">
+      ${p.phase}
+    </button>
+  `).join('');
+}
+
+function renderMain() {
+  const main = document.getElementById('main-content');
+  main.innerHTML = PHASES.map((phase, pi) => {
+    const lecturesHtml = phase.lectures.map(lec => renderLecture(lec, phase.color)).join('');
+    return `
+      <div class="phase-block" id="${phase.id}">
+        <div class="phase-header" style="border-bottom:2px solid ${phase.color}33;">
+          <div class="phase-circle" style="border:2px solid ${phase.color};background:${phase.color}11;color:${phase.color};">
+            P${pi+1}
+          </div>
+          <div class="phase-title-wrap">
+            <div class="phase-label" style="color:${phase.color};">${phase.phase}</div>
+            <div class="phase-name">${phase.title}</div>
+          </div>
+          <div class="phase-count">${phase.lectures.length} lecture${phase.lectures.length>1?'s':''}</div>
+        </div>
+        <div class="lecture-list">${lecturesHtml}</div>
+      </div>
+    `;
+  }).join('') + renderLegend();
+}
+
+function renderLecture(lec, phaseColor) {
+  const isDone = completedSet.has(lec.id);
+  const isOpen = expandedSet.has(lec.id);
+  const topicsHtml = lec.topics.map(t => `<span class="topic-pill">${t}</span>`).join('');
+  const resourcesHtml = lec.resources.map(r => {
+    const pc = PLATFORM_COLORS[r.type] || '#4ECDC4';
+    const pi = PLATFORM_ICONS[r.type] || '🔗';
+    return `
+      <div class="resource-row ${r.tag==='Primary'?'primary-res':''}">
+        <div class="platform-icon" style="background:${pc}22;">${pi}</div>
+        <div class="resource-info">
+          <div class="resource-top">
+            <a href="${r.url}" target="_blank" rel="noopener noreferrer"
+               class="resource-link" style="color:${pc};border-bottom:1px solid ${pc}44;">
+              ${r.label}
+            </a>
+            <span class="tag-pill ${r.tag==='Primary'?'tag-primary':'tag-supplement'}">${r.tag}</span>
+          </div>
+          <div class="resource-note">${r.note}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="lecture-card ${isDone?'done':''}" style="border-color:${isDone?phaseColor+'55':'#1e1e3a'}">
+      <div class="lecture-header" onclick="toggleExpand(${lec.id})">
+        <div class="check-circle ${isDone?'checked':''}" onclick="toggleComplete(event,${lec.id})">
+          ${isDone?'✓':''}
+        </div>
+        <div class="lec-num" style="background:${phaseColor}22;border:1px solid ${phaseColor}44;color:${phaseColor};">
+          ${lec.id}
+        </div>
+        <div style="flex:1;">
+          <div class="lec-title ${isDone?'done':''}">${lec.title}</div>
+          <div class="lec-meta">${lec.topics.length} topics · ${lec.resources.length} resources</div>
+        </div>
+        <span class="lec-arrow ${isOpen?'open':''}">▾</span>
+      </div>
+      ${isOpen ? `
+        <div class="lecture-body">
+          <div class="section-label">Topics Covered</div>
+          <div class="topics-wrap">${topicsHtml}</div>
+          <div class="section-label">Resources</div>
+          <div class="resources-list">${resourcesHtml}</div>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+function renderLegend() {
+  const platforms = Object.entries(PLATFORM_COLORS).map(([name,color]) => `
+    <div class="legend-item">
+      <div class="legend-dot" style="background:${color};"></div>
+      ${PLATFORM_ICONS[name]} ${name}
+    </div>
+  `).join('');
+  return `
+    <div class="legend">
+      <div class="section-label">Legend</div>
+      <div class="legend-items">
+        ${platforms}
+        <div class="legend-item">
+          <span class="tag-pill tag-primary">PRIMARY</span> Main resource
+        </div>
+        <div class="legend-item">
+          <span class="tag-pill tag-supplement">SUPPLEMENT</span> Supporting resource
+        </div>
+        <div class="legend-item" style="color:#555;font-size:11px;">
+          ✓ Click the circle on any lecture to mark it complete
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Init
+renderAll();
+</script>
+</body>
+</html>
